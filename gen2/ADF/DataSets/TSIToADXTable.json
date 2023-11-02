@@ -1,0 +1,35 @@
+{
+	"name": "TSIToADXTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TSIToADXIngestion_ADXCluster",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TSItoADXDatasets"
+		},
+		"annotations": [],
+		"type": "AzureDataExplorerTable",
+		"schema": [
+			{
+				"name": "timestamp",
+				"type": "datetime"
+			},
+			{
+				"name": "EventTimeStamp_datetime",
+				"type": "datetime"
+			},
+			{
+				"name": "DoubleValue_double",
+				"type": "real"
+			},
+			{
+				"name": "TimeSeriesId_string",
+				"type": "string"
+			}
+		],
+		"typeProperties": {
+			"table": "testtable"
+		}
+	}
+}

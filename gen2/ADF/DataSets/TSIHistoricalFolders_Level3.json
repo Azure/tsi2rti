@@ -1,0 +1,41 @@
+{
+	"name": "TSIHistoricalFolders_Level3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TSIToADXStorageAccount",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ContainerName": {
+				"type": "string"
+			},
+			"Level1FolderName": {
+				"type": "string"
+			},
+			"Level2FolderName": {
+				"type": "string"
+			},
+			"Level3FolderName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "TSItoADXDatasets"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@concat(dataset().Level1FolderName,'/',dataset().Level2FolderName,'/',dataset().Level3FolderName)",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().ContainerName",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

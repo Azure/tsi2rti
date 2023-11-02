@@ -1,0 +1,53 @@
+{
+	"name": "TSItoADXHistoricalFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TSIToADXStorageAccount",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ContainerName": {
+				"type": "string"
+			},
+			"Level1FolderName": {
+				"type": "string"
+			},
+			"Level2FolderName": {
+				"type": "string"
+			},
+			"Level3FolderName": {
+				"type": "string"
+			},
+			"Level4FolderName": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "TSItoADXDatasets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat(dataset().Level1FolderName,'/',dataset().Level2FolderName,'/',dataset().Level3FolderName,'/',dataset().Level4FolderName,'/')",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().ContainerName",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
