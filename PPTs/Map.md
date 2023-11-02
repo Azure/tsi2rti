@@ -17,7 +17,8 @@
       - PowerBI
       - ADX Dashboards
       - Grafana
-      - TSI Javascript Controls (embed in your application), ie. https://aka.ms/kusto.trender 
+      - TSI Javascript Controls (embed in your application)
+      - https://aka.ms/kusto.trender
       - Seeq (cost money)
       - Etc..
   - TSI is supported for 3 years but no more development. We advise you to migrate as soon as your comfortable
@@ -53,7 +54,7 @@ Visualization Options
 - Grafana ([Patient Monitoring with ADT - Grafana (azgrafana.io)](https://kustografanademo.scus.azgrafana.io/d/WgraFH1nk/patient-monitoring-with-adt?orgId=1&refresh=10s))
 - TSI Javascript Controls ([Time Series Insights JavaScript SDK Examples (tsiclientsample.azurewebsites.net)](https://tsiclientsample.azurewebsites.net/))
 - Kusto Trender ([Fully featured Trender](https://kustotrender.z6.web.core.windows.net/withplatform/exploreeventspayg.html))
-Seeq (https://seeq.atlassian.net/wiki/spaces/KB/pages/1318650038/Microsoft+Azure+Data+Explorer+(ADX)+Connector) 
+- Seeq (https://seeq.atlassian.net/wiki/spaces/KB/pages/1318650038/Microsoft+Azure+Data+Explorer+(ADX)+Connector) 
 
 ## TSI Live Data 
 At this point we should have a conversation with the customer on how we will connect to the hot path data flowing into TSI. Data will be flowing into TSI via EventHub or IoTHub so we will need to create a managed pipeline to ADX to ingest this data. 
