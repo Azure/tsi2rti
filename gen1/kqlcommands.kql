@@ -1,7 +1,17 @@
 .create table tsi_historical (raw:dynamic)
 
-.add database MyDatabase admins  ('aaduser=18e6117b-4e7b-4816-900d-4e842b9e461f;72f988bf-86f1-41af-91ab-2d7cd011db47') 'v-sameerkul@microsoft.com'
-
 .create table tsi_historical ingestion json mapping 'mapping_raw' '[{"column":"raw", "Properties":{"Path":"$"}}]'
 
+.add database MyDatabase admins  ('aaduser=18e6117b-4e7b-4816-900d-4e842b9e461f;72f988bf-86f1-41af-91ab-2d7cd011db47') 'v-sameerkul@microsoft.com'
+
+
 tsi_historical
+| take 10 
+
+tsi_historical
+| top 100 by ingestion_time() desc
+
+
+.show table tsi_historical extents details
+| project MaxCreatedOn, MinCreatedOn
+| summarize count() by MaxCreatedOn, MinCreatedOn
