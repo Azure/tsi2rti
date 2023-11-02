@@ -10,9 +10,9 @@ The Microsoft **Cloud Migration Factory** rogram accepts **Lakehouse** [nominati
 TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how to migrate through a series of presentations, demos and tooling. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
 
 - Slide Deck ([PPTx](https://github.com/Azure/tsi2adx/blob/main/PPTs/TSI%20to%20ADX%20-%20Lessons.pptx), [PDF](https://github.com/Azure/tsi2adx/blob/main/PPTs/TSI%20to%20ADX%20-%20Lessons.pdf))
-- [Demos](url)
-- [Agenda](url)
-- [Map](url)
+- [Demos](./PPTs/Demos.md)
+- [Agenda](./PPTs/Agenda.md)
+- [Map](./PPTs/Map.md)
 
 For additional details, refer to the [Datasheet](url) 
 
