@@ -50,10 +50,10 @@ TSI Gen2 Demo envs:
 
 ## Demo Scripts
 ### PowerShell - LightIngest.exe CLI Tool** (Preferred - Recommneded) 
-- [TSItoADXIngestion.ps1](./gen2/TSItoADXIngestion.ps1)
+- [TSItoADXIngestion.ps1](../gen2/TSItoADXIngestion.ps1)
 
 ### ADF (Azure Data Factory Pipeline)
-- https://dev.azure.com/CEandS/Azure-Data-Explorer/_git/ADX-Onboarding?path=/Demos/Demo3/Pipelines
+- [Pipelines](ADF/Pipelines)
 
 
 # Lesson 4
