@@ -14,7 +14,7 @@ TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how-to migr
 - [Agenda](PPTs/Agenda.md)
 - [Map](PPTs/Map.md)
 
-For additional details, refer to the [Datasheet](url) 
+For additional details, refer to the **Page 5** in [Datasheet](PPTs/Datasheet-CIP-ADX-Onboarding.pdf)
 
 ## Resources
 - https://aka.ms/adx.iot
