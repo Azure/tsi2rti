@@ -9,7 +9,7 @@ Duration: 1/2 Day
 
 MS-Internal only [join SG](https://idwebelements/GroupManagement.aspx?Group=adxdemoenv&Operation=join) while on Corp VPN.
 
-TSI Explorer (azure.com)
+[TSI Explorer (azure.com)](https://insights.timeseries.azure.com/?endpoint=api.crystal-dev.windows-int.net) > See Demo env for front-end experience if needed.
 
 Map: https://microsoft-my.sharepoint.com/:w:/p/bwatts/EYPhRAHN6FRIhpvPJCVyqNEBsAzqjGeA0hGy9vKAwSjFXg 
  
