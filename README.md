@@ -6,8 +6,8 @@ This repo contains collateral that can be leveraged by customers to migrate from
 The Microsoft **Cloud Migration Factory** rogram accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resources at no-cost to the customer. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
 
 
-### Workshop Introduction
-TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how to migrate through a series of presentations, demos and tooling. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
+## Introduction
+TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how-to migrate through a series of presentations, demos and tooling. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
 
 - Slide Deck ([PPTx](PPTs/TSI%20to%20ADX%20-%20Lessons.pptx), [PDF](PPTs/TSI%20to%20ADX%20-%20Lessons.pdf))
 - [Demos](PPTs/Demos.md)
