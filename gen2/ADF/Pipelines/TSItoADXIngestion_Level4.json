@@ -1,0 +1,140 @@
+{
+	"name": "TSItoADXIngestion_Level4",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Level 4 Historical Files",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "TSIHistoricalFolders_Level4",
+						"type": "DatasetReference",
+						"parameters": {
+							"ContainerName": {
+								"value": "@pipeline().parameters.ContainerName",
+								"type": "Expression"
+							},
+							"Level1FolderName": {
+								"value": "@pipeline().parameters.Level1FolderName",
+								"type": "Expression"
+							},
+							"Level2FolderName": {
+								"value": "@pipeline().parameters.Level2FolderName",
+								"type": "Expression"
+							},
+							"Level3FolderName": {
+								"value": "@pipeline().parameters.Level3FolderName",
+								"type": "Expression"
+							},
+							"Level4FolderName": {
+								"value": "@pipeline().parameters.Level4FolderName",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Level 4 Historical Files",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Level 4 Historical Files').output.childItems",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Ingest Datafile into ADX",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "TSItoADXIngestFile",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"ContainerName": {
+										"value": "@pipeline().parameters.ContainerName",
+										"type": "Expression"
+									},
+									"Level1FolderName": {
+										"value": "@pipeline().parameters.Level1FolderName",
+										"type": "Expression"
+									},
+									"Level2FolderName": {
+										"value": "@pipeline().parameters.Level2FolderName",
+										"type": "Expression"
+									},
+									"Level3FolderName": {
+										"value": "@pipeline().parameters.Level3FolderName",
+										"type": "Expression"
+									},
+									"Level4FolderName": {
+										"value": "@pipeline().parameters.Level4FolderName",
+										"type": "Expression"
+									},
+									"FileName": {
+										"value": "@item().name",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"ContainerName": {
+				"type": "string"
+			},
+			"Level1FolderName": {
+				"type": "string"
+			},
+			"Level2FolderName": {
+				"type": "string"
+			},
+			"Level3FolderName": {
+				"type": "string"
+			},
+			"Level4FolderName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "TSItoADXIngestion"
+		},
+		"annotations": []
+	}
+}

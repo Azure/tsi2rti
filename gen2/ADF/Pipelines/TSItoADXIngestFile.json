@@ -1,0 +1,104 @@
+{
+	"name": "TSItoADXIngestFile",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ParquetSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						}
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TSItoADXHistoricalFile",
+						"type": "DatasetReference",
+						"parameters": {
+							"ContainerName": {
+								"value": "@pipeline().parameters.ContainerName",
+								"type": "Expression"
+							},
+							"Level1FolderName": {
+								"value": "@pipeline().parameters.Level1FolderName",
+								"type": "Expression"
+							},
+							"Level2FolderName": {
+								"value": "@pipeline().parameters.Level2FolderName",
+								"type": "Expression"
+							},
+							"Level3FolderName": {
+								"value": "@pipeline().parameters.Level3FolderName",
+								"type": "Expression"
+							},
+							"Level4FolderName": {
+								"value": "@pipeline().parameters.Level4FolderName",
+								"type": "Expression"
+							},
+							"FileName": {
+								"value": "@pipeline().parameters.FileName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TSIToADXTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"ContainerName": {
+				"type": "string"
+			},
+			"Level1FolderName": {
+				"type": "string"
+			},
+			"Level2FolderName": {
+				"type": "string"
+			},
+			"Level3FolderName": {
+				"type": "string"
+			},
+			"Level4FolderName": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "TSItoADXIngestion"
+		},
+		"annotations": []
+	}
+}
