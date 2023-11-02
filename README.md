@@ -1,14 +1,22 @@
-# Project
+# TSI to ADX
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+## Description
+This repo contains collateral that can be leveraged by customers to migrate from TSI to ADX. 
 
-As the maintainer of this project, please make a few updates:
+The Microsoft **Cloud Migration Factory** rogram accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resources at no-cost to the customer. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+
+### Workshop Introduction
+TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how to migrate through a series of presentations, demos and tooling. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
+
+- [Slide Deck](url) 
+- [Demos](url)
+- [Agenda](url)
+- [Map](url)
+
+For additional details, refer to the [Datasheet](url) 
+
+
 
 ## Contributing
 
