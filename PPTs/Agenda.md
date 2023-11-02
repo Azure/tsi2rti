@@ -9,9 +9,9 @@ Duration: 1/2 Day
 
 MS-Internal only [join SG](https://idwebelements/GroupManagement.aspx?Group=adxdemoenv&Operation=join) while on Corp VPN.
 
-[TSI Explorer (azure.com)](https://insights.timeseries.azure.com/?endpoint=api.crystal-dev.windows-int.net) > See Demo env for front-end experience if needed.
+[TSI Explorer (azure.com)](https://insights.timeseries.azure.com/?endpoint=api.crystal-dev.windows-int.net) > See [Sample Demo](https://insights.timeseries.azure.com/demo) env for front-end experience if needed.
 
-Map: https://microsoft-my.sharepoint.com/:w:/p/bwatts/EYPhRAHN6FRIhpvPJCVyqNEBsAzqjGeA0hGy9vKAwSjFXg 
+[Map](./Map.md)
  
 Lesson	Topics	Est. Minutes	Person 	Completion Date
 Lesson 1	Why TSI to ADX migration?	 30	Hiram	5/31/22
