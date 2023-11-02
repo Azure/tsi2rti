@@ -27,20 +27,17 @@ MS-Internal only [join SG](https://idwebelements/GroupManagement.aspx?Group=adxd
 ||Demo 2 (ADX and how it works?) > option [M02-Demo4-IoT.kql](https://github.com/Azure/ADXIoTAnalytics/blob/main/assets/OfficialDemos/M02-Demo4-IoT.kql)||||
 || * Show IoT demo of ADX explaining what you can do with ADX. IoT demo must include some of the timeseries analysis functions that TSI provided. * Emphasis on Time Series render & dashboard||||
 ||||||| 
-Lesson 3	Migrating from TSI to ADX	 60	Achan, Ismael, El Amin	6/15/22
- 	Walkthrough the key steps of migrating from TSI to ADX. https://docs.microsoft.com/en-us/azure/time-series-insights/how-to-tsi-gen2-migration 
- 		 
- 	Explain what actions customers need to take to complete the migration. Explain the key attention items. Explain the automation options available at each step	 		 
- 	Demo 3 (Setting up migration tooling/services)			
- 	•	Show the relevant Azure services that need to be setup before the actual migration can occur (including ADX, ADF, Automation Accounts, Log Analytics for monitoring, LightIngest, Visualization (PBI, Azure Grafana, etc.)			
-	Demo 4 (Migrating from TSI to ADX)			
-	•	Show the historical data migration automation
-•	Show how to handle migration of integration points (ingestion, visualization and REST APIs)			
-				
-Lesson 4	Finalizing the migration	45	Devang	6/15/22
-	Explain how to complete and finalize the migration			
-	Explain how long TSI and ADX need to run in parallel, how to plant the cutover, actions needed to cut over, user migration, updating DNS entries, etc.			
-	Demo 5 (Finalizing the migration)			
-	•	Show what changes need to be made for cutover from TSI to ADX.			
- 
-
+|Lesson 3 | **Migrating from TSI to ADX** | 60 | Achan, Ismael, El Amin | 6/15/22 |
+|| Walkthrough the key steps of migrating from TSI to ADX. https://docs.microsoft.com/en-us/azure/time-series-insights/how-to-tsi-gen2-migration ||||	 
+|| Explain what actions customers need to take to complete the migration. Explain the key attention items. Explain the automation options available at each step ||||
+|| Demo 3 (Setting up migration tooling/services) ||||
+|| * Show the relevant Azure services that need to be setup before the actual migration can occur (including ADX, ADF, Automation Accounts, Log Analytics for monitoring, LightIngest, Visualization (PBI, Azure Grafana, etc.) ||||
+|| Demo 4 (Migrating from TSI to ADX) ||||
+|| Show the historical data migration automation ||||
+|| Show how to handle migration of integration points (ingestion, visualization and REST APIs) ||||
+|||||||
+| Lesson 4| **Finalizing the migration** | 45 | Devang | 6/15/22 |
+|| Explain how to complete and finalize the migration||||
+|| Explain how long TSI and ADX need to run in parallel, how to plant the cutover, actions needed to cut over, user migration, updating DNS entries, etc.||||	
+|| Demo 5 (Finalizing the migration)||||
+|| Show what changes need to be made for cutover from TSI to ADX.||||
