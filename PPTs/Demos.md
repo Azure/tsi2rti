@@ -53,7 +53,7 @@ TSI Gen2 Demo envs:
 - [TSItoADXIngestion.ps1](../gen2/TSItoADXIngestion.ps1)
 
 ### ADF (Azure Data Factory Pipeline)
-- [Pipelines](ADF/Pipelines)
+- [Pipelines](../gen2/ADF/Pipelines)
 
 
 # Lesson 4
