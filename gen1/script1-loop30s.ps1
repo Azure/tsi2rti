@@ -5,7 +5,7 @@ $TenantId = ""
 $Environment_FQDN = "a563527c-3ac8-4cc8-8cfd-ac2633c0eb0e.env.timeseries.azure.com" #without https
 $ADXuri = "https://ingest-kvc-0c8bpxbke5e6g64gn1.northeurope.kusto.windows.net;Fed=True"
 $db = "MyDatabase"
-$t = "Counter_raw"
+$t = "tsi_historical"
 $pkgroot = "C:\Users\v-sameerku\Kusto\Microsoft.Azure.Kusto.Tools.11.3.5\tools\net6.0"
 $startDate = "2023-10-27T23:59:59"
 $endDate = "2023-10-27T23:54:59"
