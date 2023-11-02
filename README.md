@@ -24,10 +24,10 @@ For additional details, refer to the [Datasheet](url)
 - [.create table command](https://learn.microsoft.com/azure/data-explorer/kusto/management/create-table-command)
 - [ADX Ingestion Overview](https://learn.microsoft.com/en-us/azure/data-explorer/ingest-data-overview)
 - [.show extents](https://learn.microsoft.com/azure/data-explorer/kusto/management/show-extents)
-- [How to ingest data with REST API](https://learn.microsoft.com/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest) *not recommended for this migration
-- [Streaming ingestion HTTP request](https://learn.microsoft.com/azure/data-explorer/kusto/api/rest/streaming-ingest) *not recommended for this migration
+- [How to ingest data with REST API](https://learn.microsoft.com/azure/data-explorer/kusto/api/netfx/kusto-ingest-client-rest) (not required for this migration)
+- [Streaming ingestion HTTP request](https://learn.microsoft.com/azure/data-explorer/kusto/api/rest/streaming-ingest) (not required for this migration)
 - [Configure streaming ingestion on ADX](https://learn.microsoft.com/azure/data-explorer/ingest-data-streaming?tabs=azure-portal%2Ccsharp)
-- [Auth over HTTPS](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/rest/authentication) *not recommended for this migration
+- [Auth over HTTPS](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/rest/authentication) (not required for this migration)
 - Kusto SDK examples using .Net SDK via [PowerShell](https://github.com/Azure/ADXIoTAnalytics/tree/main/assets/OfficialDemos/Others/PowerShell)
 - https://aka.ms/learn.kql
 - https://aka.ms/mustlearnkql
