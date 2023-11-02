@@ -1,0 +1,21 @@
+{
+	"name": "TSIToADXIngestion_ADXCluster",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataExplorer",
+		"typeProperties": {
+			"endpoint": "https://sladxdev.canadacentral.kusto.windows.net",
+			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+			"servicePrincipalId": "2bcf1c77-b27c-4276-a57b-ac43b9ff57ff",
+			"servicePrincipalKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "SelfLearning_KeyVault_Dev",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kv-adxxingestion"
+			},
+			"database": "sladxdbdev"
+		}
+	}
+}

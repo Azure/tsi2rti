@@ -1,0 +1,10 @@
+{
+	"name": "TSIToADXStorageAccount",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://adxexternaltablepoc.blob.core.windows.net"
+		}
+	}
+}
