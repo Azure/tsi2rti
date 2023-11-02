@@ -5,7 +5,7 @@
 * Ingests directly into ADX using Kusto SDK in JSON format using Batching ingestion. See [pre-req instructions](https://github.com/Azure/ADXIoTAnalytics/tree/main/assets/OfficialDemos/Others/PowerShell#pre-reqs) to install PS7 and SDK.
 * Define your variables at the top of the script accoridng your enviroment.
 * Uses App Registration service principal secret to authenticate to TSI. Please grant it Data Access permissions to the source TSI env.
-* Uses Federated Authentication to authenticate to ADX. May require setting the ADX cluster Security setting to multi-tenant depending on your enviroment that's launching the script, and granting Ingestor permission on the Database, see exsample to add access in kqlcommands.kql.
+* Uses Federated Authentication to authenticate to ADX. May require setting the ADX cluster Security setting to multi-tenant depending on your enviroment that's launching the script, and granting Ingestor permission on the Database, see exsample to add access in [kqlcommands.kql](./kqlcommands.kql).
 * Loop frequency is set to 30s in consideration to large TSI production enviroments with millions of rows per day.
 
 [script2-countbyday.ps1](./script2-countbyday.ps1)
