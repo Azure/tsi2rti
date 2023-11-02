@@ -13,22 +13,20 @@ MS-Internal only [join SG](https://idwebelements/GroupManagement.aspx?Group=adxd
 
 [Map](./Map.md)
  
-Lesson	Topics	Est. Minutes	Person 	Completion Date
-Lesson 1	Why TSI to ADX migration?	 30	Hiram	5/31/22
- 	Explain the announcement	 		 
- 	Explain the migration path, options, timelines. What is possible and what is not	 		 
- 	 Demo 1 (Understanding TSI environment)	 		 
- 	•	Show how to gather specific details of the TSI environment that is needed to plan the migration (blob folder, lateness in data, etc.)
-•	Blob storage folder, give access, 	 		 
- 	 	 		 
-Lesson 2	Understanding ADX > Overview module of ADX for IoT	 60	Hiram	5/31/22
- 	Explain that ADX is the best suited option. 	 		 
- 	Explain the differences between TSI and ADX. Highlight the “breaking” differences and how these will be handled	 		 
- 	Demo 2 (ADX and how it works?) > option ADXIoTAnalytics/M02-Demo4-IoT.kql at main · Azure/ADXIoTAnalytics (github.com)
- 		 
- 	•	Show IoT demo of ADX explaining what you can do with ADX. IoT demo must include some of the timeseries analysis functions that TSI provided
-•	Emphasis on Time Series render & dashboard	 		 
-		 		 
+| Lesson | Topics | Est. Minutes | Person | Completion Date |
+|---|---|---|---|---|
+|Lesson 1 | **Why TSI to ADX migration?** | 30 | Hiram | 5/31/22 |
+||Explain the announcement||||
+||Explain the migration path, options, timelines. What is possible and what is not||||
+||Demo 1 (Understanding TSI environment)||||
+|| * Show how to gather specific details of the TSI environment that is needed to plan the migration (blob folder, lateness in data, etc.). * Blob storage folder, give access||||
+||||||| 
+|Lesson 2|**Understanding ADX > Overview module of ADX for IoT**|60| Hiram| 5/31/22 |
+||Explain that ADX is the best suited option.||||
+||Explain the differences between TSI and ADX. Highlight the "breaking" differences and how these will be handled|
+||Demo 2 (ADX and how it works?) > option [M02-Demo4-IoT.kql](https://github.com/Azure/ADXIoTAnalytics/blob/main/assets/OfficialDemos/M02-Demo4-IoT.kql)||||
+|| * Show IoT demo of ADX explaining what you can do with ADX. IoT demo must include some of the timeseries analysis functions that TSI provided. * Emphasis on Time Series render & dashboard||||
+||||||| 
 Lesson 3	Migrating from TSI to ADX	 60	Achan, Ismael, El Amin	6/15/22
  	Walkthrough the key steps of migrating from TSI to ADX. https://docs.microsoft.com/en-us/azure/time-series-insights/how-to-tsi-gen2-migration 
  		 
