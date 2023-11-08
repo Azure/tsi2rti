@@ -15,3 +15,18 @@ tsi_historical
 .show table tsi_historical extents details
 | project MaxCreatedOn, MinCreatedOn
 | summarize count() by MaxCreatedOn, MinCreatedOn
+
+
+tsi_historical
+| mv-expand raw
+| extend raw.$ts, raw.values
+| extend SensorName=tostring(raw_values[0]), raw_values[1], raw_values[2] //and so on...
+//| project-away raw, raw_values //when ready
+
+// next create function
+// ref: https://learn.microsoft.com/azure/data-explorer/kusto/management/updatepolicy
+
+// create destination table 
+ .set tsi_historical_destination <| function | limit 0
+
+// next apply update policy on destination, set raw table as source and function as query. 
