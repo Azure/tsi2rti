@@ -1,4 +1,3 @@
-# Define Variables
 $AppId = ""
 $Secret = ""
 $TenantId = ""
@@ -16,4 +15,7 @@ $URI = "https://$Environment_FQDN/availability?api-version=2016-12-12"
 
 $Response = Invoke-WebRequest -Method GET -Headers $headers -Uri $URI
 
-$Response.Content
+$Response = ConvertFrom-Json $Response.Content
+
+Write-Host "TSI environment events from (min): " $Response.range.from 
+Write-Host "TSI environment events to (max): " $Response.range.to
