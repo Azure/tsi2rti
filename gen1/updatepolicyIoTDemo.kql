@@ -1,0 +1,158 @@
+datatable(id:datetime, Event:string, counter:string, MoreData:dynamic) [
+    datetime(1910-06-11), "Born", '', dynamic({"key1":"value1", "key2":"value2"}),
+    datetime(1930-01-01), '',"Enters Ecole Navale", dynamic({"key1":"value3", "key2":"value4"}),
+    datetime(1953-01-01), "Published first book",'' ,dynamic({"key1":"value5", "key2":"value6"}),
+    datetime(1997-06-25), '', "Died", dynamic({"key1":"value7", "key2":"value8"})
+]
+| extend Event1 = iff((isnotempty(counter) == true), counter, Event)
+
+
+
+let values=dynamic([
+        "E6000046",
+        "pcmSensor",
+        "online",
+        "4bcd44c3-0214-4f56-80ed-9557a71a9d51",
+        "5N89PAK2",
+        "E6",
+        "E6000046",
+        "ELEC_POTENTIAL",
+        "VOLT",
+        "2",
+        "e9326142-068b-494b-bff7-421a44fa0cae",
+        "Battery",
+        "3.1",
+        "3.1",
+        "14",
+        null,
+        null,
+        "Grantsburg",
+        "ac441291-2f71-46d2-a3d7-ece1a7250865",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "2023-11-07T23:58:09.4450000Z",
+        "eb22b5fc-19c3-4b7d-91a7-db7c87b090f5",
+        "Battery",
+        "003",
+        "2023-11-07T23:58:11.3394505Z",
+        null,
+        null,
+        false,
+        null,
+        null,
+        null,
+        "|9a4832041b46d94fbfb49fe9c4d136e0.5980b983_3.",
+        -1
+    ]);
+print values=values
+// | mv-expand values
+| extend values[0], values[1], values[2], values[3]
+| project-away values
+
+//option 1: iff() in the kql function
+datatable (values:dynamic)[
+dynamic(["E6000046","pcmSensor","online","4bcd44c3-0214-4f56-80ed-9557a71a9d51"]),
+dynamic(["5N89PAK2","E6","E6000046","ELEC_POTENTIAL"])
+]
+// | mv-expand values
+| extend values[0], 
+iff(values[1]=='pcmSensor', values[1], ''), 
+values[2], 
+values[3], 
+col4=iff(values[1]<>'pcmSensor',values[1],'')
+| project-away values
+
+
+// option 2: filter to Silver, then union seperate tables to Gold that have diff schemas.
+let x=datatable (values:dynamic)[
+dynamic(["E6000046","pcmSensor","online","4bcd44c3-0214-4f56-80ed-9557a71a9d51"]),
+dynamic(["5N89PAK2","E6","E6000046","ELEC_POTENTIAL"])
+]
+// | mv-expand values
+| extend values[0] //, values[22]
+| where values_0 =='5N89PAK2' //and value_22 =='is not a pkg'
+| extend col1=values[0], col2=values[1], col3=values[2],col4=values[3]
+| project-away values;
+let y=datatable (values:dynamic)[
+dynamic(["E6000046","pcmSensor","online","4bcd44c3-0214-4f56-80ed-9557a71a9d51"]),
+dynamic(["5N89PAK2","E6","E6000046","ELEC_POTENTIAL"])
+]
+// | mv-expand values
+| extend values[1]
+| where values_1 =='pcmSensor'
+| extend col1=values[0], status=values[1], col3=values[2],col4=values[3]
+| project-away values;
+x
+| union y
+
+
+// tsi source everything land table raw [BRONZE]
+// kql functions, multiple update policies to split raw into seperate tables per pkg (ie.15 table) [SILVER]
+// another kql function, joins or unions Silver tables into [GOLD] table that has everything structured.
+// for GOLD consider a materliazed view that only latest signals using arg_max(), etc.
+
+
+// problem large scale single table:
+// gold table 2 billion rows like in one of your TSI prod  envs > adx cluster needs to bigger. 
+// 2 billion grows exponetional 
+// scan extends of data is not related to your common query?
+// ingestion_time(), singals over time. give me singal value at 10am. its where data is for 10am (1000s to scan).
+// if they where in sperates few files only to scan ie. 10s files and it would require less storage, less resources. 
+// columnstore gives rowgroups of compressed data. search 'abc1xy4' on col1, where clause col1 =='abc1xy4', but on 1/1/2021 was ingested on 1/1/2021
+
+// https://aka.ms/learn.kql
+// https://aka.ms/adxinaday (log data) 
+// https://aka.ms/adx.microhack (iot data of trucks)
+// https://aka.ms/adx.iot (iot data of Thermostats has Temperature, Humidity, Battery)
+
+
+
+// SECTION: update policy demo.
+
+.drop table rawIoT ifexists
+
+.create table rawiot (raw:dynamic)
+
+.create table iot (deviceid:string, sensor:string, value:int)
+
+.create-or-alter function transformiot() { 
+  rawiot
+  | mv-expand raw
+  | extend tostring(raw.deviceid), sensor=tostring(raw.sensor), value=toint(raw.value)
+  | project-away raw
+}
+
+// update policy (mini-ETL / trigger)
+.alter table iot policy update @'[{ "IsEnabled": true, "Source": "rawiot", "Query": "transformiot()", "IsTransactional": true}]'
+
+//silver
+iot
+| take 10
+
+//bronze
+rawiot
+| take 10
+
+//simulate ingestion of historical from tsi
+
+.set-or-append rawiot <| 
+let raw= dynamic([{"deviceid" : "axd1y45", "sensor": "battery", "value": 79}]);
+print raw=raw
+
+
+.clear table iot data
+
+.set-or-append iot <|
+rawiot
+| mv-expand raw 
+| extend raw.value
+| where raw_value <> 89
+| extend tostring(raw.deviceid), sensor=tostring(raw.sensor), value=toint(raw.value)
+| project-away raw, raw_value
+
+
+.alter-merge table rawiot policy retention softdelete = 0s
