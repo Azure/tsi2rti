@@ -3,7 +3,7 @@
 ## Description
 This repo contains collateral that can be leveraged by customers to migrate from TSI to ADX. 
 
-The Microsoft **Cloud Migration Factory** program accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resources at no-cost to the customer. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
+The Microsoft **Cloud Migration Factory** program accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resource(s) at no-cost to the customer. Hands-On keyboard resource(s) are assigned for 6-8 weeks max per nomination with agreed scope. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
 
 
 ## Introduction
