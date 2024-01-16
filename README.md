@@ -3,7 +3,7 @@
 ## Description
 This repo contains collateral that can be leveraged by customers to migrate from TSI to ADX. 
 
-The Microsoft **Cloud Migration Factory** rogram accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resources at no-cost to the customer. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
+The Microsoft **Cloud Migration Factory** program accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resources at no-cost to the customer. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
 
 
 ## Introduction
@@ -13,6 +13,8 @@ TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how-to migr
 - [Demos](PPTs/Demos.md)
 - [Agenda](PPTs/Agenda.md)
 - [Map](PPTs/Map.md)
+- [Docs](https://aka.ms/tsi2adx)
+- One Pager: [Lakehouse Factory.pdf](PPTs/Lakehouse%20Factory%20-%20Customer%20Facing.pdf)
 
 For additional details, refer to the **Page 5** in [Datasheet](PPTs/Datasheet-CIP-ADX-Onboarding.pdf)
 
