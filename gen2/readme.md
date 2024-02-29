@@ -14,6 +14,8 @@ Install AzCLI:
 install-module az
 ```
 
+- ref: https://learn.microsoft.com/azure/data-explorer/lightingest
+- OneClick wizard to create table & lightingest command: https://dataexplorer.azure.com/oneclick
 
 
 # TSI Gen2 to ADX/Fabric KQLDB
