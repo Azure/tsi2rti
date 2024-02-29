@@ -1,8 +1,12 @@
-Install-Package Microsoft.Azure.Kusto.Tools -MinimumVersion 6.0.3 -Verbose
+$pkgroot = "C:\Microsoft.Azure.Kusto.Tools\tools\net6.0"
+
+$null = [System.Reflection.Assembly]::LoadFrom("$pkgroot\Kusto.Data.dll")
+$null = [System.Reflection.Assembly]::LoadFrom("$pkgroot\Kusto.Ingest.dll")
+$null = [System.Reflection.Assembly]::LoadFrom("$pkgroot\Kusto.Cloud.Platform.dll")
 
 
 #Verify the package is installed at the below location
-$workingdir = 'C:\Program Files\PackageManagement\NuGet\Packages\Microsoft.Azure.Kusto.Tools.6.0.3\tools\net5.0'
+$workingdir = 'C:\Microsoft.Azure.Kusto.Tools\tools\net6.0'
 
 cd $workingdir
 
