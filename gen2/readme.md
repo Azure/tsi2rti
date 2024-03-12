@@ -1,8 +1,9 @@
 # TSI Gen2 to ADX/Fabric KQLDB
 Using the PowerShell script is the prefered method; it is fast without needing additional resources. It will migrate only the contents of PT=Time folder. This is the required folder which has all the historical data, except for latest ~5 minutes. Hot (new) data should of been migrated prior using a new consumer group from streaming source, ie. hubs, to ADX/KQLDB. A low-code/no-code approach is also available using ADF/Fabric Pipelines. 
 
-First use the Get Data wizard or [OneClick UI](https://dataexplorer.azure.com/oneclick) to create the hist table and mapping using one of the oldest files in PT=Time folder. The preview screen should display metric names (tags) and values.
-Second, if your historical data requires additional transformations/flattening, create any necessary KQL functions to normalize the records from the source hist table and enable the Update Policy on the destination/target table. Then proceed with running the tool (PowerShell script or ADF/Fabric Pipeline, whichever you prefer) for rest of migration. This way any required transformations will be applied in-realtime as historical data is migrated.
+First use the Get Data wizard or [OneClick UI](https://dataexplorer.azure.com/oneclick) to create the hist table and mapping using one of the oldest files in PT=Time folder. The preview screen should display metric names (tags) and values. 
+
+Second, if your historical data requires additional transformations/flattening, create any necessary [partition policies](https://learn.microsoft.com/azure/data-explorer/kusto/management/partitioning-policy) for performance optimizations or KQL functions to normalize the records from the source hist table and enable the Update Policy on the destination/target table. Then proceed with running the tool (PowerShell script or ADF/Fabric Pipeline, whichever you prefer) for rest of migration. This way any required transformations will be applied in-realtime as historical data is migrated.
 
 ## PowerSheell Pre-reqs:
 ```
@@ -22,6 +23,49 @@ install-module az
 - ref: https://learn.microsoft.com/azure/data-explorer/lightingest
 - OneClick wizard to create table & lightingest command: https://dataexplorer.azure.com/oneclick
 
+## Tools
+### Light Ingest 
+- CLI Command tool to ingest data from Azure Storage into ADX 
+- Commonly used to backfill a table or migrate historical data.
+```
+LightIngest "Data Source=https://ingest-demo.westus.kusto.windows.net;AAD Federated Security=True" -db:demo -table:Trips -source:"" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+
+LightIngest "Data Source=https://ingest-demo.eastus.kusto.windows.net;AAD Federated Security=True" -db:demo -table:Trips -source:"https://demo.blob.core.windows.net/adx" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'" -pattern:"*.parquet" -format:parquet -limit:2 -cr:10.0 -dontWait:true
+```
+![image](https://github.com/Azure/tsi2adx/assets/4984616/bee07851-f932-41e1-a9c9-39027da34751)
+
+See More: [How to ingest data using CreationTime](https://docs.microsoft.com/azure/data-explorer/lightingest#how-to-ingest-data-using-creationtime)
+
+### Example
+![image](https://github.com/Azure/tsi2adx/assets/4984616/8af0f935-605e-42af-9713-049f92b0e6d1)
+
+
+## Post Data Migration
+- Verify all the data was migrated.
+- Migrate dashboard from TSI to ADX/KQLDB using PBI, ADX Dashboards/Real Time Analytics dashboards, Grafana, [Kusto trender](https://aka.ms/kusto.trender) or Seeq using [ADX/KQLDB connector](https://support.seeq.com/kb/latest/cloud/azure-data-explorer-adx).
+- Check metrics in Log Analytics or Insights blade for Successful Ingestion and verify it matches the number of blobs in PT=Time folders. For example, using the Log Analytics Workspace for the cluster diags, this will provide the number of blobs ingested:
+```
+SucceededIngestion 
+| where Table == 'tsihist' 
+| summarize dcount(IngestionSourcePath) 
+```
+- Monitor for ingestion failures using [Metrics for queued ingestion](https://learn.microsoft.com/azure/data-explorer/monitor-queued-ingestion) and Insights blade. For example, using KQL:
+```
+.show ingestion failures
+```
+- Run some basic KQL queries to explore the data in ADX
+```
+tsihist
+| take 10
+
+tsihist
+| summarize min(timestamp), max(timestamp)
+
+tsihist
+| summarize max(ingestion_time())
+```
+
+
 ## TSI Folders Details
 This section briefly explains he nature of files in PT=Live, PT=Time and PT=TsId folders.
 
@@ -39,4 +83,3 @@ This means the recommendation is to **never consume files in PT=TsId** and **alw
 - If it is critical for them to avoid duplicate data and they are OK not to get the recent data (because e.g., they have other way to migrate recent data to ADX/KQLDb), then **only** PT=Time files should be consumed.
 
 FYI before TSI was deprecated when customer wanted to query files in Cold Store using some 3rd party tools like Spark, then we always recommended querying **PT=Time folder only** to avoid duplicate data and we warned customer that they might not see data for the latest ~5 mins.
-
