@@ -5,6 +5,13 @@ First use the Get Data wizard or [OneClick UI](https://dataexplorer.azure.com/on
 
 Second, if your historical data requires additional transformations/flattening, create any necessary [partition policies](https://learn.microsoft.com/azure/data-explorer/kusto/management/partitioning-policy) for performance optimizations or KQL functions to normalize the records from the source hist table and enable the Update Policy on the destination/target table. Then proceed with running the tool (PowerShell script or ADF/Fabric Pipeline, whichever you prefer) for rest of migration. This way any required transformations will be applied in-realtime as historical data is migrated.
 
+- If you want to skip the storage part of the script you can delete lines 18-23 and replace the `$source` value with a Sas URL. You create this Sas URL from the container of your TSI env, navigate to the PT=Time folder, click generate Sas, grant it List & Read permissions, extend the expiration date out a few days and copy the Sas URL to the script.
+
+- If you identify during preview of the Get Data wizar or OneClick UI that your TSI envs have different schemas then follow one of these options:
+  - **Preferred:** Create a table for each env with their own corresponding mappings. Alternatively, if they're the same schema you can migrate to the same table.
+  - Load to a single table supporting different TSI env schemas then use a table with a single column of datatype `dynamic`. ie. `.create table tsihistraw (message:dynamic)`. Since the incomming historical data contains different schemas, you still need to create sperate KQL functions and tables with update policies to flatten them into separate columns. This lets you migrate the historical data quicker but takes more time compared to having created separate tables as mentioned above.
+
+
 ## PowerSheell Pre-reqs:
 ```
 Invoke-WebRequest -Uri https://nuget.org/api/v2/package/Microsoft.Azure.Kusto.Tools -OutFile Microsoft.Azure.Kusto.Tools.zip
