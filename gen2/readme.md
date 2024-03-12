@@ -27,14 +27,15 @@ install-module az
 ### Light Ingest 
 - CLI Command tool to ingest data from Azure Storage into ADX 
 - Commonly used to backfill a table or migrate historical data.
+- Example for csv files on local
 ```
 LightIngest "Data Source=https://ingest-demo.westus.kusto.windows.net;AAD Federated Security=True" -db:demo -table:Trips -source:"" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
-
+```
+- Example of backfill using `creationTimePattern` param for parquet files on azure blob. See More: [How to ingest data using CreationTime](https://docs.microsoft.com/azure/data-explorer/lightingest#how-to-ingest-data-using-creationtime)
+```
 LightIngest "Data Source=https://ingest-demo.eastus.kusto.windows.net;AAD Federated Security=True" -db:demo -table:Trips -source:"https://demo.blob.core.windows.net/adx" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'" -pattern:"*.parquet" -format:parquet -limit:2 -cr:10.0 -dontWait:true
 ```
-![image](https://github.com/Azure/tsi2adx/assets/4984616/bee07851-f932-41e1-a9c9-39027da34751)
-
-See More: [How to ingest data using CreationTime](https://docs.microsoft.com/azure/data-explorer/lightingest#how-to-ingest-data-using-creationtime)
+- See help using `lightingest.exe /help`
 
 ### Example
 ![image](https://github.com/Azure/tsi2adx/assets/4984616/8af0f935-605e-42af-9713-049f92b0e6d1)
