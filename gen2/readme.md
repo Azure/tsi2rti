@@ -9,10 +9,10 @@ Second, if your historical data requires additional transformations/flattening, 
 
 - If you identify during preview of the Get Data wizar or OneClick UI that your TSI envs have different schemas then follow one of these options:
   - **Preferred:** Create a table for each env with their own corresponding mappings. Alternatively, if they're the same schema you can migrate to the same table.
-  - Load to a single table supporting different TSI env schemas then use a table with a single column of datatype `dynamic`. ie. `.create table tsihistraw (message:dynamic)`. Since the incomming historical data contains different schemas, you still need to create sperate KQL functions and tables with update policies to flatten them into separate columns. This lets you migrate the historical data quicker but takes more time compared to having created separate tables as mentioned above.
+  - Load to a single table supporting different TSI env schemas then use a table with a single column of datatype `dynamic`. ie. `.create table tsihistoricalraw (message:dynamic)`. Since the incomming historical data contains different schemas, you still need to create sperate KQL functions and tables with update policies to flatten them into separate columns. This lets you migrate the historical data quicker but takes more time compared to having created separate tables as mentioned above.
 
 
-## PowerSheell Pre-reqs:
+## PowerSheell Pre-reqs 🔍
 ```
 Invoke-WebRequest -Uri https://nuget.org/api/v2/package/Microsoft.Azure.Kusto.Tools -OutFile Microsoft.Azure.Kusto.Tools.zip
 Expand-Archive .\Microsoft.Azure.Kusto.Tools.zip -Destination "C:\Microsoft.Azure.Kusto.Tools\" -Force
@@ -30,7 +30,7 @@ install-module az
 - ref: https://learn.microsoft.com/azure/data-explorer/lightingest
 - OneClick wizard to create table & lightingest command: https://dataexplorer.azure.com/oneclick
 
-## Tools
+## Tools 🛠️
 ### Light Ingest 
 - CLI Command tool to ingest data from Azure Storage into ADX 
 - Commonly used to backfill a table or migrate historical data.
@@ -48,33 +48,47 @@ LightIngest "Data Source=https://ingest-demo.eastus.kusto.windows.net;AAD Federa
 ![image](https://github.com/Azure/tsi2adx/assets/4984616/8af0f935-605e-42af-9713-049f92b0e6d1)
 
 
-## Post Data Migration
+## Post Data Migration 🏁
 - Verify all the data was migrated.
 - Migrate dashboard from TSI to ADX/KQLDB using PBI, ADX Dashboards/Real Time Analytics dashboards, Grafana, [Kusto trender](https://aka.ms/kusto.trender) or Seeq using [ADX/KQLDB connector](https://support.seeq.com/kb/latest/cloud/azure-data-explorer-adx).
 - Check metrics in Log Analytics or Insights blade for Successful Ingestion and verify it matches the number of blobs in PT=Time folders. For example, using the Log Analytics Workspace for the cluster diags, this will provide the number of blobs ingested:
-```
+```kql
 SucceededIngestion 
-| where Table == 'tsihist' 
+| where Table == 'tsihistorical' 
 | summarize dcount(IngestionSourcePath) 
 ```
 - Monitor for ingestion failures using [Metrics for queued ingestion](https://learn.microsoft.com/azure/data-explorer/monitor-queued-ingestion) and Insights blade. For example, using KQL:
-```
+```kql
 .show ingestion failures
 ```
 - Run some basic KQL queries to explore the data in ADX
-```
-tsihist
+```kql
+tsihistorical
 | take 10
 
-tsihist
+tsihistorical
 | summarize min(timestamp), max(timestamp)
 
-tsihist
+tsihistorical
 | summarize max(ingestion_time())
+```
+- Verify historical has been indexed properly (backfilled) where extents MaxCreatedDate is in the past aligned to contents of PT=Time folder, not as of today.
+```kql
+tsihistorical
+|summarize max(timestamp), min(timestamp)
+ 
+.show extents
+|where TableName =='tsihistorical'
+|summarize max(MaxCreatedOn)
+ 
+.show extents
+|where TableName =='tsihistorical'
+|summarize count() by bin(MaxCreatedOn,7d)
+|render timechart
 ```
 
 
-## TSI Folders Details
+## TSI Folders Details 📖
 This section briefly explains he nature of files in PT=Live, PT=Time and PT=TsId folders.
 
 When data are initially ingested into Cold Store, they land in PT=Live folder. Periodically (~ every several mins) TSI merges data from PT=Live files into a single file in PT=Time and after some time deletes original files in PT=Live.
