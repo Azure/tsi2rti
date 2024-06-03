@@ -1,20 +1,19 @@
-# TSI to Kusto (ADX/KQLDB)
+# TSI to Real-Time Intelligence (using Fabric Eventhouse or ADX)
 
 ## Description
-This repo contains collateral that can be leveraged by customers to migrate from TSI to Kusto (aka. ADX or Fabric KQL Database). 
+This repo contains collateral that can be leveraged to migrate from TSI to Microsoft Fabric Real-Time Intelligence (RTI) or Azure Data Explorer (ADX). 
 
-The Microsoft **Cloud Migration Factory** program accepts **Lakehouse** [nominations](https://aka.ms/cmf) to help our TSI customers migrate to ADX by providing hands-on keyboard resource(s) at no-cost to the customer. Hands-On keyboard resource(s) are assigned for 6-8 weeks max per nomination with agreed scope. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo. Customres can contact their account team Data & AI Specialist or Cloud Solution Architect to submit a nomination. 
+The Microsoft **Cloud Migration Factory** program accepts customer [nominations](https://aka.ms/cmf) to help our TSI customers migrate to Fabric RTI or ADX, by providing hands-on keyboard resource(s) at no-cost to the customer. Hands-On keyboard resource(s) are assigned for a period of 6-8 weeks with an agreed scope. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo to complete the migration. Customres can contact their account team Data & AI Specialist, Customer Success Account Manager (CSAM) or Cloud Solution Architect (CSA) to submit a nomination. 
 
-
-## Introduction
-TSI to ADX Migration workshop is a 1/2-day proctor-led that explains how-to migrate through a series of presentations, demos and tooling. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
+## Readiness
+A workshop can be proctored by a Microsoft representative or SME, as a 1/2-day remote-session, to explain & demonstrate how-to migrate end-to-end. Using a mix of presentations, demos and available tooling, the workshop upskill attendies why they should migrate & how. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
 
 - Slide Deck ([PPTx](PPTs/TSI%20to%20ADX%20-%20Lessons.pptx), [PDF](PPTs/TSI%20to%20ADX%20-%20Lessons.pdf))
 - [Demos](PPTs/Demos.md)
 - [Agenda](PPTs/Agenda.md)
 - [Map](PPTs/Map.md)
 - [Docs](https://aka.ms/tsi2adx)
-- One Pager: [Lakehouse Factory.pdf](PPTs/Lakehouse%20Factory%20-%20Customer%20Facing.pdf)
+- One Pager: [Cloud Migration Factory.pdf](PPTs/CSU%20CMF-RealTimeIntelligence.pdf)
 
 For additional details, refer to the **Page 5** in [Datasheet](PPTs/Datasheet-CIP-ADX-Onboarding.pdf)
 
