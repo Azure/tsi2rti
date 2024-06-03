@@ -1,4 +1,5 @@
-# TSI to Real-Time Intelligence (using Fabric Eventhouse or ADX)
+# TSI to RTI (Real-Time Intelligence)
+Using Fabric Eventhouse or ADX
 
 ## Description
 This repo contains collateral that can be leveraged to migrate from TSI to Microsoft Fabric Real-Time Intelligence (RTI) or Azure Data Explorer (ADX). 
