@@ -42,7 +42,7 @@ Review our [pricing](https://azure.microsoft.com/pricing/details/data-explorer/)
 Since Azure Time Series Insights is on a retirement schedule, the offering no longer receives the updates required to maintain the latest FedRAMP High compliance requirements. The offering can no longer be considered FedRAMP High compliant.
 
 ### Help and support 
-If you have questions, get answers from community experts in Microsoft Q&A. If you have a support plan and you need technical help, please create a support request. 
+If you have questions, get answers from community experts in [Microsoft Q&A](https://learn.microsoft.com/answers/tags/188/azure-time-series-insights). If you have a support plan and you need technical help, please create a [support request](https://portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview). 
 1.	Under Issue type, select Technical.
 2.	Under Subscription, select your subscription.
 3.	Under Service, select My services, then select Time Series Insights
