@@ -9,7 +9,7 @@ The Microsoft **Cloud Migration Factory** program accepts customer [nominations]
 ## Readiness
 A workshop can be proctored by a Microsoft representative or SME, as a 1/2-day remote-session, to explain & demonstrate how-to migrate end-to-end. Using a mix of presentations, demos and available tooling, the workshop upskill attendies why they should migrate & how. Azure Time Series Insights (TSI) service will no longer be supported [after March 2025](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
 
-- Slide Deck ([PPTx](PPTs/TSI%20to%20ADX%20-%20Lessons.pptx), [PDF](PPTs/TSI%20to%20ADX%20-%20Lessons.pdf))
+- Slide Deck ([PPTx](PPTs/TSI%20to%20ADX%20-%20Lessons.pptx), [PDF](PPTs/CSU%20CMF%20Analytics%20-%20Real%20Time%20Intelligence.pdf))
 - [Demos](PPTs/Demos.md)
 - [Agenda](PPTs/Agenda.md)
 - [Map](PPTs/Map.md)
