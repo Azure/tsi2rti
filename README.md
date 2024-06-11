@@ -7,14 +7,14 @@ This repo contains collateral that can be leveraged to migrate from TSI to Micro
 The Microsoft **Cloud Migration Factory** program accepts customer [nominations](https://aka.ms/cmf) to help our TSI customers migrate to Fabric RTI or ADX, by providing hands-on keyboard resource(s) at no-cost to the customer. Hands-On keyboard resource(s) are assigned for a period of 6-8 weeks with an agreed scope. The hands-on keybard resource and customer can leverage the tools & collateral shared in this repo to complete the migration. Customers can contact their account team Data & AI Specialist, Customer Success Account Manager (CSAM) or Cloud Solution Architect (CSA) to submit a nomination. 
 
 ## Readiness
-A workshop can be proctored by a Microsoft representative or SME, as a 1/2-day remote-session, to explain & demonstrate how-to migrate end-to-end. Using a mix of presentations, demos and available tooling, the workshop upskill attendies why they should migrate & how. Azure Time Series Insights (TSI) service will be retired on [July 7th of 2024](https://aka.ms/tsi2adx). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
+A workshop can be proctored by a Microsoft representative or SME, as a 1/2-day remote-session, to explain & demonstrate how-to migrate end-to-end. Using a mix of presentations, demos and available tooling, the workshop upskill attendies why they should migrate & how. Azure Time Series Insights (TSI) service will be retired on [July 7th of 2024](https://learn.microsoft.com/azure/time-series-insights/migration-to-fabric). Consider migrating existing TSI environments to alternative solutions as soon as possible. The workshop will share a look at the feature comparisons with ADX and help execute migration steps.
 
 - [CSU CMF Analytics - Real Time Intelligence](PPTs/CSU%20CMF%20Analytics%20-%20Real%20Time%20Intelligence.pdf)
 - [TSI to ADX - Lessons](PPTs/TSI%20to%20ADX%20-%20Lessons.pptx)
 - [Demos](PPTs/Demos.md)
 - [Agenda](PPTs/Agenda.md)
 - [Map](PPTs/Map.md)
-- [Docs](https://aka.ms/tsi2adx)
+- [Docs](https://learn.microsoft.com/azure/time-series-insights/migration-to-fabric)
 
 For additional details, refer to the **Page 5** in [Datasheet](PPTs/Datasheet-CIP-ADX-Onboarding.pdf)
 
