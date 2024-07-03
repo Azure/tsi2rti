@@ -23,7 +23,7 @@ $URI = "https://$Environment_FQDN/aggregates?api-version=2016-12-12"
 for ($date = $startDate; $date -le $endDate; $date = $date.AddDays(1)) {
     # Format the start and end times for the current day
     $fromDateTime = $date.ToString("yyyy-MM-ddT00:00:00.000Z")
-    $toDateTime = $date.AddDays(1).AddSeconds(-1).ToString("yyyy-MM-ddT23:59:59.999Z")
+    $toDateTime = $date.AddDays(1).ToString("yyyy-MM-ddT00:00:00.000Z")
 
     # Create the request body for the current day
     $aggregateBody = @"
